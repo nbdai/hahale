@@ -16,10 +16,16 @@ public class Users {
     private  String id;
     @ApiModelProperty(value = "用户名",name = "username",example = "dzlup",required = true)
     private String username;
+    @ApiModelProperty(value = "密码",name = "password",example = "123456",required = true)
     private  String password;
+    @ApiModelProperty(hidden = true)
     private  String faceImage;
+    @ApiModelProperty(hidden = true)
     private  String nickname;
+    @ApiModelProperty(hidden = true)
     private  Integer fansCounts;
+    @ApiModelProperty(hidden = true)
     private Integer followCounts;
+    @ApiModelProperty(hidden = true)
     private Integer receiveLikeCounts;
 }
