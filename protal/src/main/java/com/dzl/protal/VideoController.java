@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import com.dzl.pojo.Bgm;
+import com.dzl.pojo.Users;
 import com.dzl.pojo.Videos;
 import com.dzl.utils.FetchVideoCover;
 import com.dzl.utils.JSONResult;
@@ -122,9 +123,9 @@ public class VideoController extends BasicController {
 		// 判断bgmId是否为空，如果不为空，
 		// 那就查询bgm的信息，并且合并视频，生产新的视频
 		if (StringUtils.isNotBlank(bgmId)) {
-			Bgm bgm = bgmService.queryBgmById(bgmId);
+
+			Bgm bgm = restTemplate.getForObject("http://localhost:8082/queryBgmById/"+bgmId,Bgm.class);
 			String mp3InputPath = FILE_SPACE + bgm.getPath();
-			
 			MergeVideoMp3 tool = new MergeVideoMp3(FFMPEG_EXE);
 			String videoInputPath = finalVideoPath;
 			
