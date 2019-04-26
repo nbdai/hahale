@@ -153,9 +153,7 @@ public class VideoController extends BasicController {
 		video.setCoverPath(coverPathDB);
 		video.setStatus(VideoStatusEnum.SUCCESS.value);
 		video.setCreateTime(new Date());
-		
-		String videoId = videoService.saveVideo(video);
-		
+		String videoId =   restTemplate.postForObject("http://localhost:8082/saveVideo",video,String.class);
 		return JSONResult.ok(videoId);
 	}
 	
