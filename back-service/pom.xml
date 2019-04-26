@@ -29,7 +29,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<version>1.4.2.RELEASE</version>
 		</dependency>
 		<!-- alibaba的druid数据库连接池 -->
 		<dependency>

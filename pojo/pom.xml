@@ -20,6 +20,17 @@
 	</properties>
 
 	<dependencies>
+		<!-- swagger2 配置 能生成相应的api文档.-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.4.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.dzl</groupId>
 			<artifactId>utils</artifactId>

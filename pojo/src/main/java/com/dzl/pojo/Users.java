@@ -1,5 +1,7 @@
 package com.dzl.pojo;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 @Entity
 @Data
 @ApiModel(value = "用户对象",description = "这是用户对象")
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 public class Users {
     @Id
     @ApiModelProperty(hidden = true)
