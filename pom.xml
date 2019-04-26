@@ -23,6 +23,7 @@
 		<module>dao</module>
 		<module>back-service</module>
 		<module>login</module>
+		<module>protal</module>
 	</modules>
 
 	<properties>
