@@ -38,7 +38,7 @@ public class VideoController extends BasicController {
 	
     @Autowired
     private RestTemplate restTemplate;
-	//啊啊啊
+
 	@ApiOperation(value="上传视频", notes="上传视频的接口")
 	@ApiImplicitParams({
 		@ApiImplicitParam(name="userId", value="用户id", required=true, 
