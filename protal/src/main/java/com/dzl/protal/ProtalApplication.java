@@ -11,6 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableEurekaClient
 @EnableSwagger2
 @EntityScan(basePackages={"com.dzl.pojo"})
+
 public class ProtalApplication {
 
 	public static void main(String[] args) {

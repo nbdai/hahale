@@ -12,6 +12,7 @@ import com.dzl.pojo.Videos;
 import com.dzl.utils.FetchVideoCover;
 import com.dzl.utils.JSONResult;
 import com.dzl.utils.MergeVideoMp3;
+import com.dzl.utils.PagedResult;
 import com.dzl.utils.enums.VideoStatusEnum;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -175,7 +176,7 @@ public class VideoController extends BasicController {
 		}
 		
 		// 文件保存的命名空间
-//		String fileSpace = "C:/imooc_videos_dev";
+//		String fileSpace = "f:/videos_dev";
 		// 保存到数据库中的相对路径
 		String uploadPathDB = "/" + userId + "/video";
 		
@@ -216,9 +217,10 @@ public class VideoController extends BasicController {
 				fileOutputStream.close();
 			}
 		}
-		
-		videoService.updateVideo(videoId, uploadPathDB);
-		
+		Videos videos = new Videos();
+		videos.setId(videoId);
+		videos.setCoverPath(uploadPathDB);
+		restTemplate.postForObject("http://localhost:8082/updateVideo",videos,Integer.class);
 		return JSONResult.ok();
 	}
 	
