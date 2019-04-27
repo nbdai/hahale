@@ -16,3 +16,34 @@ eureka:
 
     service-url:
       defaultZone: http://localhost:8555/eureka/
+
+spring.datasource.druid.initial-size: 1
+spring.datasource.druid.min-idle: 1
+spring.datasource.druid.max-active: 20
+spring.datasource.druid.test-on-borrow: true
+spring.datasource.druid.stat-view-servlet.allow: true
+
+
+
+############################################################
+#
+# mybatis \u914d\u7f6e
+#
+############################################################
+# mybatis \u914d\u7f6e
+mybatis.type-aliases-package: com.dzl.pojo
+mybatis.mapper-locations: classpath:com/dzl/dao/mapper/*.xml
+# \u901a\u7528 Mapper \u914d\u7f6e
+mapper.mappers: com.dzl.utils.MyMapper
+mapper.not-empty: false
+mapper.identity: MYSQL
+# \u5206\u9875\u63d2\u4ef6\u914d\u7f6e
+pagehelper.helperDialect: mysql
+pagehelper.supportMethodsArguments: true
+pagehelper.params: count=countSql
+
+
+
+# \u6587\u4ef6\u4e0a\u4f20\u914d\u7f6e
+spring.http.multipart.maxFileSize=100Mb
+spring.http.multipart.maxRequestSize=1000Mb

@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import com.dzl.pojo.Bgm;
+import com.dzl.pojo.Comments;
 import com.dzl.pojo.Users;
 import com.dzl.pojo.Videos;
 import com.dzl.utils.FetchVideoCover;
@@ -39,6 +40,8 @@ public class VideoController extends BasicController {
 	
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+	private PageHelpService pageHelpService;
 
 	@ApiOperation(value="上传视频", notes="上传视频的接口")
 	@ApiImplicitParams({
@@ -242,7 +245,7 @@ public class VideoController extends BasicController {
 			pageSize = PAGE_SIZE;
 		}
 		
-		PagedResult result = videoService.getAllVideos(video, isSaveRecord, page, pageSize);
+		PagedResult result = pageHelpService.getAllVideos(video, isSaveRecord, page, pageSize);
 		return JSONResult.ok(result);
 	}
 	
@@ -262,7 +265,7 @@ public class VideoController extends BasicController {
 
 		int pageSize = 6;
 		
-		PagedResult videosList = videoService.queryMyFollowVideos(userId, page, pageSize);
+		PagedResult videosList = pageHelpService.queryMyFollowVideos(userId, page, pageSize);
 		
 		return JSONResult.ok(videosList);
 	}
@@ -285,26 +288,26 @@ public class VideoController extends BasicController {
 			pageSize = 6;
 		}
 		
-		PagedResult videosList = videoService.queryMyLikeVideos(userId, page, pageSize);
+		PagedResult videosList = pageHelpService.queryMyLikeVideos(userId, page, pageSize);
 		
 		return JSONResult.ok(videosList);
 	}
 	
 	@PostMapping(value="/hot")
 	public JSONResult hot() throws Exception {
-		return JSONResult.ok(videoService.getHotwords());
+		return JSONResult.ok(pageHelpService.getHotwords());
 	}
 	
 	@PostMapping(value="/userLike")
 	public JSONResult userLike(String userId, String videoId, String videoCreaterId)
 			throws Exception {
-		videoService.userLikeVideo(userId, videoId, videoCreaterId);
+		pageHelpService.userLikeVideo(userId, videoId, videoCreaterId);
 		return JSONResult.ok();
 	}
 	
 	@PostMapping(value="/userUnLike")
 	public JSONResult userUnLike(String userId, String videoId, String videoCreaterId) throws Exception {
-		videoService.userUnLikeVideo(userId, videoId, videoCreaterId);
+		pageHelpService.userUnLikeVideo(userId, videoId, videoCreaterId);
 		return JSONResult.ok();
 	}
 	
@@ -315,7 +318,7 @@ public class VideoController extends BasicController {
 		comment.setFatherCommentId(fatherCommentId);
 		comment.setToUserId(toUserId);
 		
-		videoService.saveComment(comment);
+		pageHelpService.saveComment(comment);
 		return JSONResult.ok();
 	}
 	
@@ -335,7 +338,7 @@ public class VideoController extends BasicController {
 			pageSize = 10;
 		}
 		
-		PagedResult list = videoService.getAllComments(videoId, page, pageSize);
+		PagedResult list = pageHelpService.getAllComments(videoId, page, pageSize);
 		
 		return JSONResult.ok(list);
 	}
