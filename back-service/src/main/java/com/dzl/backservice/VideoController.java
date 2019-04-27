@@ -13,13 +13,19 @@ public class VideoController {
     @RequestMapping("saveVideo")
     public String saveVideo(@RequestBody Videos videos){
 <<<<<<< HEAD
+<<<<<<< HEAD
         return videoService.saveVide(videos);
 =======
+=======
+>>>>>>> mac
         return videoService.saveVideo(videos);
     }
     @RequestMapping("updateVideo")
     public Integer  updateVideo(@RequestBody Videos videos){
       return videoService.updateVideo(videos.getId(),videos.getCoverPath());
+<<<<<<< HEAD
+>>>>>>> mac
+=======
 >>>>>>> mac
     }
 }
