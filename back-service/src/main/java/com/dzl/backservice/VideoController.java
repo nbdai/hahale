@@ -12,6 +12,14 @@ public class VideoController {
     private  VideoService videoService;
     @RequestMapping("saveVideo")
     public String saveVideo(@RequestBody Videos videos){
+<<<<<<< HEAD
         return videoService.saveVide(videos);
+=======
+        return videoService.saveVideo(videos);
+    }
+    @RequestMapping("updateVideo")
+    public Integer  updateVideo(@RequestBody Videos videos){
+      return videoService.updateVideo(videos.getId(),videos.getCoverPath());
+>>>>>>> mac
     }
 }
