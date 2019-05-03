@@ -12,11 +12,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableEurekaClient
 @EnableSwagger2
 @EntityScan(basePackages={"com.dzl.pojo"})
-<<<<<<< HEAD
-
-=======
 @MapperScan("com.dzl.dao.mapper")
->>>>>>> mac
 public class ProtalApplication {
 
 	public static void main(String[] args) {

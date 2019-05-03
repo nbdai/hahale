@@ -1,19 +1,5 @@
 package com.dzl.protal;
 
-<<<<<<< HEAD
-import com.dzl.dao.searchrecords.SearchRecordsRepository;
-import com.dzl.dao.video.VideoReposity;
-import com.dzl.pojo.SearchRecords;
-import com.dzl.pojo.Videos;
-import com.dzl.utils.PagedResult;
-import org.n3r.idworker.Sid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-=======
 import com.dzl.dao.comments.CommontsRepostory;
 import com.dzl.dao.mapper.*;
 import com.dzl.dao.searchrecords.SearchRecordsRepository;
@@ -33,7 +19,6 @@ import tk.mybatis.mapper.entity.Example;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
->>>>>>> mac
 
 
 @Service
@@ -43,11 +28,6 @@ public class PageHelpService {
     @Autowired
     private SearchRecordsRepository searchRecordsRepository;
     @Autowired
-<<<<<<< HEAD
-    private VideoReposity videoReposity;
-    public PagedResult getAllVideos(Videos videos , Integer isSaveRecord, Integer page,Integer pageSize){
-// 保存热搜词
-=======
     private VideosMapperCustom videosMapperCustom;
     @Autowired
     private SearchRecordsMapper searchRecordsMapper;
@@ -64,7 +44,6 @@ public class PageHelpService {
     @Transactional(propagation = Propagation.REQUIRED)
     public PagedResult getAllVideos(Videos videos , Integer isSaveRecord, Integer page,Integer pageSize){
          // 保存热搜词
->>>>>>> mac
         String desc = videos.getVideoDesc();
         String userId = videos.getUserId();
         if (isSaveRecord != null && isSaveRecord == 1) {
@@ -73,18 +52,6 @@ public class PageHelpService {
             record.setId(recordId);
             record.setContent(desc);
             searchRecordsRepository.save(record);
-<<<<<<< HEAD
-
-
-
-        }
-        return null;
-    }
-
-
-
-
-=======
         }
         PageHelper.startPage(page, pageSize);
         List<VideosVO> list = videosMapperCustom.queryAllVideos(desc, userId);
@@ -194,5 +161,4 @@ public class PageHelpService {
 
         return grid;
     }
->>>>>>> mac
 }
