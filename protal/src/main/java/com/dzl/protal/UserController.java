@@ -82,10 +82,11 @@ public class UserController {
        UsersFans usersFans = new UsersFans();
         usersFans.setFanId(fanId);
         usersFans.setUserId(userId);
-        Users users = restTemplate.getForObject("http://localhost:8082/findById/"+userId,Users.class);
+        ///
+        Users users = restTemplate.getForObject("http://localhost:8082/findById/{userId}",Users.class,userId);
         UserInfo userInfo = new UserInfo();
         BeanUtils.copyProperties(users, userInfo);
-       boolean flag =  restTemplate.postForObject("http://localhost:8082/queryIfFollow",usersFans,Boolean.class);
+        boolean flag =  restTemplate.postForObject("http://localhost:8082/queryIfFollow",usersFans,Boolean.class);
         userInfo.setFollow(flag);
         return JSONResult.ok(userInfo);
     }

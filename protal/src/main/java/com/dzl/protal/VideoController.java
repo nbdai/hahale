@@ -94,7 +94,6 @@ public class VideoController extends BasicController {
 //				String fileNamePrefix = fileName.split("\\.")[0];
 				
 				if (StringUtils.isNotBlank(fileName)) {
-					
 					finalVideoPath = FILE_SPACE + uploadPathDB + "/" + fileName;
 					// 设置数据库保存的路径
 					uploadPathDB += ("/" + fileName);
@@ -128,7 +127,7 @@ public class VideoController extends BasicController {
 		// 那就查询bgm的信息，并且合并视频，生产新的视频
 		if (StringUtils.isNotBlank(bgmId)) {
 
-			Bgm bgm = restTemplate.getForObject("http://localhost:8082/queryBgmById/"+bgmId,Bgm.class);
+			Bgm bgm = restTemplate.getForObject("http://localhost:8082/queryBgmById/{bgmId}",Bgm.class,bgmId);
 			String mp3InputPath = FILE_SPACE + bgm.getPath();
 			MergeVideoMp3 tool = new MergeVideoMp3(FFMPEG_EXE);
 			String videoInputPath = finalVideoPath;

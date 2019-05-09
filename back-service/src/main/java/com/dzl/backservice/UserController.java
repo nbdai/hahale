@@ -14,7 +14,7 @@ public class UserController {
         return userService.updataUserInfo(users);
     }
     @RequestMapping("findById/{userId}")
-    public Users findById(@PathVariable("userId") String userId){
+    public Users findById(@PathVariable String userId){
         return userService.findById(userId);
     }
     @RequestMapping("queryIfFollow")

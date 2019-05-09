@@ -16,9 +16,9 @@ public class BgmController {
     public List<Bgm> queryBgmList(){
         return bgmService.queryBgmList();
     }
-    @RequestMapping("queryBgmById/{id}")
-    public Bgm queryBgmById(@PathVariable("id") String id){
-        return bgmService.queryBgmById(id);
+    @RequestMapping("queryBgmById/{bgmId}")
+    public Bgm queryBgmById(@PathVariable String bgmId){
+        return bgmService.queryBgmById(bgmId);
     }
 
 }
